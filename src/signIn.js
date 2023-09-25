@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { red } from '@mui/material/colors';
 
 
 const theme = createTheme();
@@ -26,6 +27,7 @@ const dummy_data={
 };
 export default function SignIn() {
   const[validate,SetValidate]=React.useState(0)
+  const[validate1,SetValidate1]=React.useState(1)
   // const[data,Setdata]=React.useState({})
   const getObj = (data) => {
     
@@ -33,6 +35,7 @@ export default function SignIn() {
     axios.post(`http://127.0.0.1:8000/verify/`,data).then(response => {
         console.log('get successfully:', response.data);
         SetValidate(response.data);
+        SetValidate1(response.data);
     })
         .catch(error => { console.error('Error    user:', error);
       });
@@ -45,7 +48,7 @@ useEffect(() => {
   if (validate != 0) {
     localStorage.setItem('user', JSON.stringify(validate));
     // localStorage.clear();
-    navigate(`/app1/?id=${validate}`);
+    navigate(`/app/?id=${validate}`);
   }
   
 }, [validate]);
@@ -103,7 +106,7 @@ const handleSubmit =  (event) => {
               name="useName"
               autoComplete="email"
               autoFocus
-            />
+              />
             <TextField
               margin="normal"
               required
@@ -113,7 +116,7 @@ const handleSubmit =  (event) => {
               type="password"
               id="password"
               autoComplete="current-password"
-            />
+              />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -123,15 +126,12 @@ const handleSubmit =  (event) => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            >
+              >
               Sign In
             </Button>
+             <p style={{color:'red'}}> {validate1?"":"somthing wrong try again"} </p>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+              
               <Grid item>
                 <Link href="http://localhost:3000/form" variant="body2">
                   {"Don't have an account? Sign Up"}

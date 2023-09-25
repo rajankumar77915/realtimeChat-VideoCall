@@ -6,7 +6,7 @@ const Logout = () => {
     useEffect(() => {
         console.log("Logged out");
         localStorage.clear();
-        navigate(`/app1`);
+        navigate(`/app`);
     }, [navigate]);
 
     return null;

@@ -22,7 +22,8 @@ const FriendDetailTop = ({friend,id}) => {
     }
 
     const videoCamera = () => {
-        window.location.replace(`http://127.0.0.1:8000/first?id=${id}&id1=${friend}`);
+        window.open(`http://127.0.0.1:8000/first?id=${id}&id1=${friend}`, '_blank');
+
     }
 
     useEffect(() => {
@@ -42,7 +43,7 @@ const FriendDetailTop = ({friend,id}) => {
                     <span className="online_icon"></span>
                 </div>
                 {/* <!-- receiver data --> */}
-                <div className="user_info">
+                <div onClick={()=>{window.location.replace(`http://127.0.0.1:8000/person_detail/${friend}`);}} className="user_info">
                     <span>Chat with {contact.fname}</span>
                     <p>Messages</p>
                 </div>
@@ -53,7 +54,7 @@ const FriendDetailTop = ({friend,id}) => {
             </div>
 
             {/* <!-- 3 dot --> */}
-            <span id="action_menu_btn"><i className="fas fa-ellipsis-v"></i></span>
+            {/* <span id="action_menu_btn"><i className="fas fa-ellipsis-v"></i></span>
             <div className="action_menu">
                 <ul>
                     <li><i className="fas fa-user-circle"></i> View profile</li>
@@ -61,7 +62,7 @@ const FriendDetailTop = ({friend,id}) => {
                     <li><i className="fas fa-plus"></i> Add to group</li>
                     <li><i className="fas fa-ban"></i> Block</li>
                 </ul>
-            </div>
+            </div> */}
 
         </div>
     );

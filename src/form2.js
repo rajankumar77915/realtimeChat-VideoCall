@@ -27,27 +27,44 @@ const Form2 = () => {
     });
     const onSubmit = async (data) => {
         try {
-            const formData =  { 
-            "emailId": data.emailid,
-            "mobile":data.mobile,
-            "p_id":  P_id}
+            const formData =   {
+                "contactId": 2,
+                "emailId":data.emailId,
+                "mobile": data.mobile,
+                "P_id": P_id,
+            };
             const response = await axios.post("http://127.0.0.1:8000/contact_api/", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
-            navigate(`/`);
         } catch (error) {
             console.log(error);
         }
+
+
+        const formData1 =
+        {
+            "id": 5,
+            "birthdate": data.birthdate,
+            "emailId": data.email,
+            "P_id": P_id
+        };
+            try {
+         const response = await axios.post("http://127.0.0.1:8000/user/", formData1, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+            navigate(`/form3?P_id=${P_id}`);
+        }catch(error){}
     };
 
     return (
         <>
             <form  style={{ display:'flex' ,justifyContent:'center',alignItems:'center',height:'500px'}}onSubmit={handleSubmit(onSubmit)}>
                 <div className="f"><br></br>
-                    <span>emailId : </span><input type="text" {...register("emailId")} /><br></br><br></br>
+                    <span>emailId : </span><input type="email" {...register("emailId")} /><br></br><br></br>
                     <span>mobile : </span><input type="text" {...register("mobile")} /><br></br><br></br>
+                    <span>Bithdate : </span><input type='date' {...register("birthdate")} /><br></br><br></br>
 
-                    <button type="submit">Next & submit</button>
+                    <button type="submit">submit & Next</button>
                 </div>
             </form>
         </>

@@ -34,9 +34,9 @@ const Form3 = () => {
             const response = await axios.post("http://127.0.0.1:8000/loginVerify_store/", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
-            // navigate(`/`);
+            navigate(`/`);
         } catch (error) {
-            console.log(error);
+            console.log(error.data);
         }   
     };
 

@@ -43,14 +43,6 @@ const Form = () => {
         <>
             <form style={{ display:'flex' ,justifyContent:'center',alignItems:'center',height:'500px'}} onSubmit={handleSubmit(onSubmit)}>
                 <div className="f">
-                    {/* <span>UserName : </span><input type="text" {...register("name")}/>
-            <p className='error '>{errors?.name?.message}</p>
-            <span>Password : </span><input type="text" {...register("password")}></input>
-            <p className='error'>{errors?.password?.message}</p>
-            <span>confirmPassword : </span><input type="text" {...register("confirmPassword")}></input>
-            <p className='error'>{errors?.confirmPassword?.message}</p>
-        <span>age : </span><input type="text" {...register("age")}></input>
-            <p className='error'>{errors?.age?.message}</p> */}
             <br></br>
                     <span>fname : </span><input type="text" {...register("fname")} />
                     <span>mname : </span><input type="text" {...register("mname")} />
